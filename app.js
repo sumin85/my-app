@@ -5,7 +5,7 @@ const port = 3000;
 app.use(express.json());
 
 app.get('/',(req, res) => {
-  res.send('hello from Ec2!');
+  res.send('언디야 화이팅');
 });
 
 app.listen(port,('0.0.0.0'),() => {
