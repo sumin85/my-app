@@ -5,7 +5,7 @@ const port = 3000;
 app.use(express.json());
 
 app.get('/',(req, res) => {
-  res.send('fighting');
+  res.send('언디야 힘내');
 });
 
 app.listen(port,('0.0.0.0'),() => {
