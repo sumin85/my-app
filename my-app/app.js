@@ -5,9 +5,9 @@ const port = 3000;
 app.use(express.json());
 
 app.get('/',(req, res) => {
-  res.send('hello from Ec2!');
+  res.send('fighting');
 });
 
-app.listen(port,() => {
-  console.log(`server is running on http://locallhost:${port}`);
+app.listen(port,('0.0.0.0'),() => {
+    console.log(`Running on port 3000`);
 });
