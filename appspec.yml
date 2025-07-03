@@ -6,7 +6,7 @@ files:
 
 hooks:
   AfterInstall:
-    - location: scripts/install.sh
+    - location: scripts/stop.sh
       timeout: 300
       runas: ubuntu
 ApplicationStart:
