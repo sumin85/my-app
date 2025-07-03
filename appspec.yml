@@ -3,15 +3,4 @@ os: linux
 
 files:
   - source: /
-    destination: /home/ubuntu/my-app
-
-hooks:
-  BeforeInstall:
-    - location: scripts/before.sh
-      timeout: 300
-      runas: ubuntu
-
-  ApplicationStart:
-    - location: scripts/start.sh
-      timeout: 300
-      runas: ubuntu
+    destination: /home/ubuntu/build/
