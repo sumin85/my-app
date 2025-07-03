@@ -1,5 +1,17 @@
-cversion: 0.0
+version: 0.0
 os: linux
+
 files:
   - source: /
-    destination: /home/ubuntu/build
+    destination: /home/ubuntu/my-app
+
+hooks:
+  BeforeInstall:
+    - location: scripts/before.sh
+      timeout: 300
+      runas: ubuntu
+
+  ApplicationStart:
+    - location: scripts/start.sh
+      timeout: 300
+      runas: ubuntu
