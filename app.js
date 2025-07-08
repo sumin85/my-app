@@ -42,4 +42,10 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
+console.log("실행중");
+
 module.exports = app;
