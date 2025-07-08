@@ -7,7 +7,7 @@ import MyScheduleCard from "./pages/Home/MyScheduleCard";
 
 
 
-function App() {
+function HomePage() {
     const [users, setUsers] = useState([]);
 
   useEffect(() => {
@@ -15,14 +15,14 @@ function App() {
     .then(res => res.json())
     .then(data => setUsers(data));
   },[]);
-  
+
   return(
     <div>
       <Header />
       <Dashboard />
       <MyScheduleCard />
       <FriendsSchedule />
-      <MyScheduleCard />
+      <GroupNotifications />
     </div>
   )
 }

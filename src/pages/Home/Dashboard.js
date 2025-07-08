@@ -1,14 +1,12 @@
 import React from "react";
-import ScheduleCard from "../components/ScheduleCard";
-import FriendsSchedule from "../components/FriendsSchedule";
-import GroupNotifications from "../components/GroupNotifications";
-import NotificationBell from "../components/NotificationBell";
-
+import FriendsSchedule from "./FriendSchedule";
+import GroupNotifications from "./GroupNotifications";
+import MyScheduleCard from "./MyScheduleCard";
 const Dashboard = () => (
   <div className="dashboard">
     <div className="column">
-      <ScheduleCard title="📆 오늘의 일정" />
-      <ScheduleCard title="📅 이번 주 일정" />
+      <MyScheduleCard title="📆 오늘의 일정" />
+      <MyScheduleCard title="📅 이번 주 일정" />
     </div>
     <div className="column">
       <FriendsSchedule />
