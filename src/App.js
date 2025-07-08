@@ -1,23 +1,16 @@
 import logo from './logo.svg';
 import './App.css';
 import React, {useEffect, useState} from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import HomePage from './pages/Home/HomePage';
 
 function App() {
-  const [users, setUsers] = useState([]);
-
-  useEffect(() => {
-    fetch("http://52.79.186.21:3000/api/users")
-    .then(res => res.json())
-    .then(data => setUsers(data));
-  },[]);
-  
   return(
-    <div>
-      <h2>유저목록</h2>
-      <ul>
-        {users.map(user => <li key={user.id}>{user.name}</li>)}
-      </ul>
-    </div>
+    <Router>
+      <Routes>
+         <Route path='/' element={<HomePage />} />
+      </Routes>
+    </Router>
   );
 }
 
