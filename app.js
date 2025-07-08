@@ -9,6 +9,15 @@ var usersRouter = require('./routes/users');
 
 var app = express();
 const cors = require('cors');
+const port = 3000;
+
+// app.get('/',(req, res) => {
+//   res.send('hello from Ec2!');
+// });
+
+app.listen(port,() => {
+  console.log(`server is running on http://locallhost:${port}`);
+});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -23,7 +32,7 @@ app.use(cors());
 
 app.use('/api/users', usersRouter);
 
-app.get('*', (req,res) => {
+app.get('/', (req,res) => {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
@@ -43,4 +52,5 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+console.log('진행중');
 module.exports = app;
