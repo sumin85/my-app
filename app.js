@@ -38,4 +38,9 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+const PORT = 3000;
+app.listen(PORT, () => {
+  console.log(`server running`);
+});
+
 module.exports = app;
