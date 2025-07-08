@@ -43,4 +43,7 @@ app.listen(PORT, () => {
   console.log(`server running`);
 });
 
+const cors = require('cors');
+app.use(cors());
+
 module.exports = app;
