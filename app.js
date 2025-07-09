@@ -52,5 +52,8 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-console.log('진행중');
+app.listen(port, () => {
+  console.log('진행중');
+})
+
 module.exports = app;
