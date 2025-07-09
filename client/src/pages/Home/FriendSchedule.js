@@ -2,7 +2,7 @@ import React, {useState, useEffect} from "react";
 import axios from "axios";
 
 const FriendsSchedule = () => {
-    cosnt [schedules, setSchedules] = useState([]);
+    const [schedules, setSchedules] = useState([]);
 
     useEffect(() => {
         axios.get("/api/friends-schedules")

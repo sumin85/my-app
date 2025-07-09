@@ -1,7 +1,9 @@
 import React from "react";
-import FriendsSchedule from "./FriendSchedule";
+import FriendSchedule from "./FriendSchedule";
 import GroupNotifications from "./GroupNotifications";
 import MyScheduleCard from "./MyScheduleCard";
+
+
 const Dashboard = () => (
   <div className="dashboard">
     <div className="column">
@@ -9,11 +11,10 @@ const Dashboard = () => (
       <MyScheduleCard title="📅 이번 주 일정" />
     </div>
     <div className="column">
-      <FriendsSchedule />
+      <FriendSchedule />
     </div>
     <div className="column">
       <GroupNotifications />
-      <NotificationBell />
     </div>
   </div>
 );
