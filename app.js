@@ -16,12 +16,12 @@ const port = 3000;
 // });
 
 app.listen(port,() => {
-  console.log(`server is running on http://locallhost:${port}`);
+  console.log(`server is running on http://localhost:${port}`);
 });
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+app.set('view engine', 'pug');
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -34,6 +34,7 @@ app.use('/api/users', usersRouter);
 
 app.get('/', (req,res) => {
   res.sendFile(path.join(__dirname, 'build', './client/build/index.html'));
+  res.send('Hello world');
 });
 
 // catch 404 and forward to error handler
