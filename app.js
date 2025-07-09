@@ -33,7 +33,7 @@ app.use(cors());
 app.use('/api/users', usersRouter);
 
 app.get('/', (req,res) => {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+  res.sendFile(path.join(__dirname, 'build', './client/build/index.html'));
 });
 
 // catch 404 and forward to error handler
