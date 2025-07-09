@@ -16,6 +16,7 @@ const port = 3000;
 // });
 
 app.listen(port,() => {
+  console.log('진행중');
   console.log(`server is running on http://localhost:${port}`);
 });
 
@@ -32,7 +33,7 @@ app.use(cors());
 
 app.use('/api/users', usersRouter);
 
-app.get('/', (req,res) => {
+app.get('*', (req,res) => {
   res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
 });
 
@@ -52,8 +53,5 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-app.listen(port, () => {
-  console.log('진행중');
-})
 
 module.exports = app;
