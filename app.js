@@ -34,7 +34,6 @@ app.use('/api/users', usersRouter);
 
 app.get('/', (req,res) => {
   res.sendFile(path.join(__dirname, 'build', './client/build/index.html'));
-  res.send('Hello world');
 });
 
 // catch 404 and forward to error handler
