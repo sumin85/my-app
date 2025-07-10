@@ -3,22 +3,17 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const cors = require('cors');
 
 var usersRouter = require('./routes/users');
-
-
 var app = express();
-const cors = require('cors');
+
 const port = 3000;
 
 // app.get('/',(req, res) => {
 //   res.send('hello from Ec2!');
 // });
 
-app.listen(port,() => {
-  console.log('진행중');
-  console.log(`server is running on http://localhost:${port}`);
-});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -32,6 +27,11 @@ app.use(express.static(path.join(__dirname, 'client/build')));
 app.use(cors());
 
 app.use('/api/users', usersRouter);
+
+app.listen(port,() => {
+  console.log('진행중');
+  console.log(`server is running on http://localhost:${port}`);
+});
 
 app.get('/', (req,res) => {
   res.sendFile(path.join(__dirname, 'client/build', 'index.html'));

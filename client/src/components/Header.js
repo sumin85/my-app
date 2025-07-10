@@ -19,8 +19,8 @@ const Header = () => {
         <div className="header-container">
             <h1 className="logo">Schedule Share</h1>
             <nav className="header-nav">
-              <button to="/notifications" className="icon-button-notification" title="알림">🔔</button>
-              <button to={isLoggedIn ? "/mypage" : "/login"}  className="icon-button-mypage" title={isLoggedIn ? "마이페이지" : "로그인"}>👤</button>
+              <Link to="/notifications" className="icon-button-notification" title="알림">🔔</Link>
+              <Link to={isLoggedIn ? "/mypage" : "/login"}  className="icon-button-mypage" title={isLoggedIn ? "마이페이지" : "로그인"}>👤</Link>
             </nav>
         </div>
     </header>
