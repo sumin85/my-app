@@ -10,6 +10,10 @@ var app = express();
 
 const port = 3000;
 
+const friendsRouter = require('./routes/friends-schedules');
+const groupRouter   = require('./routes/group-notifications');
+const usersRouter   = require('./routes/users');
+
 // app.get('/',(req, res) => {
 //   res.send('hello from Ec2!');
 // });
@@ -27,6 +31,10 @@ app.use(express.static(path.join(__dirname, 'client/build')));
 app.use(cors());
 
 app.use('/api/users', usersRouter);
+
+app.use('/api/users', usersRouter);
+app.use('/api/friends-schedules', friendsRouter);
+app.use('/api/group-notifications', groupRouter);
 
 app.listen(port,() => {
   console.log('진행중');
