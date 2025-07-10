@@ -5,14 +5,14 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const cors = require('cors');
 
+const friendsRouter = require('./routes/friends-schedules');
+const groupRouter   = require('./routes/group-notifications');
 var usersRouter = require('./routes/users');
 var app = express();
 
 const port = 3000;
 
-const friendsRouter = require('./routes/friends-schedules');
-const groupRouter   = require('./routes/group-notifications');
-const usersRouter   = require('./routes/users');
+
 
 // app.get('/',(req, res) => {
 //   res.send('hello from Ec2!');
@@ -29,8 +29,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'client/build')));
 app.use(cors());
-
-app.use('/api/users', usersRouter);
 
 app.use('/api/users', usersRouter);
 app.use('/api/friends-schedules', friendsRouter);
