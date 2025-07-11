@@ -4,15 +4,17 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const cors = require('cors');
-
 const friendsRouter = require('./routes/friends-schedules');
 const groupRouter   = require('./routes/group-notifications');
 var usersRouter = require('./routes/users');
 var app = express();
+const {swaggerUi, specs} = require('./swagger/swagger');
+
+
 
 const port = 3000;
 
-
+const swaggerUiDist = require('swagger-ui-dist').absolutePath();
 
 // app.get('/',(req, res) => {
 //   res.send('hello from Ec2!');
@@ -33,6 +35,8 @@ app.use(cors());
 app.use('/api/users', usersRouter);
 app.use('/api/friends-schedules', friendsRouter);
 app.use('/api/group-notifications', groupRouter);
+app.use('/swagger', express.static(swaggerUiDist));
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
 
 app.listen(port,() => {
   console.log('진행중');
