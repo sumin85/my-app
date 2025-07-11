@@ -16,31 +16,46 @@ const LoginPage = () => {
     };
 
     return (
-        <div className="login-page">
-            <h2>로그인</h2>
-            <form onSubmit={handleSubmit} className="login-form">
-                <div className="form-group">
-                    <label htmlFor="username">아이디</label>
-                    <input
-                    type="text"
-                    id="username"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                    required
-                />
+        <div className="login-container">
+            <div className="login-page">
+                <h2 className="login-title">로그인</h2>
+                <form onSubmit={handleSubmit} className="login-form">
+                    <div className="form-group">
+                        <label htmlFor="username">아이디</label>
+                        <input
+                            type="text"
+                            id="username"
+                            value={username}
+                            placeholder="아이디를 입력해주세요"
+                            onChange={(e) => setUsername(e.target.value)}
+                            required
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="password">비밀번호</label>
+                        <input
+                        type="password"
+                        id="password"
+                        value={"password"}
+                        placeholder="비밀번호를 입력해주세요"
+                        onChange={(e) => setPassword(e.target.value)}
+                        required
+                        />
+                    </div>
+                    <button type="submit">로그인</button>
+                </form>
+                <div className="sub-links">
+                    <a href="#" onClick={() => navigate('/register')}>회원가입</a>
+                    <span>|</span>
+                    <a href="#" onClick={() => navigate('/find-id-password')}>아이디/비밀번호 찾기</a>
+                    <div className="divider" />
                 </div>
-                <div className="form-group">
-                    <label htmlFor="password">비밀번호</label>
-                    <input
-                    type="password"
-                    id="password"
-                    value={"password"}
-                    onChange={(e) => setPassword(e.target.value)}
-                    required
-                    />
+                <div className="social-buttons">
+                    <button className="social-button kakao">카카오</button> 
+                    <button className="social-button naver">네이버</button>
+                    <button className="social-button google">구글</button>
                 </div>
-                <button type="submit">로그인</button>
-            </form>
+            </div>
         </div>
     );
 };
