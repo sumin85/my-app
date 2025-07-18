@@ -15,7 +15,9 @@ const pool = require('../dist/config/db');
  *           schema:
  *             type: object
  *             properties:
- *               username:
+ *               name:
+ *                 type: string
+ *               email:
  *                 type: string
  *               password:
  *                 type: string
@@ -24,9 +26,9 @@ const pool = require('../dist/config/db');
  *         description: 생성 성공
  */
 router.post('/', async (req, res) => {
-  const { username, password } = req.body;
+  const { name, email, password } = req.body;
   try {
-    await pool.query('INSERT INTO public."admin" (name, email, password) VALUES ($1, $2, $3)', [username,email,password]);
+    await pool.query('INSERT INTO public."admin" (name, email, password) VALUES ($1, $2, $3)', [name,email,password]);
     res.status(201).json({ message: '사용자 생성 성공' });
   } catch (err) {
     res.status(500).json({ error: err.message });
@@ -58,13 +60,13 @@ router.get('/', async (req, res) => {
  *   get:
  *     summary: 사용자 상세 조회
  *     parameters:
- *       - in: path
+ *       - in: path 
  *         name: id
- *         required: true
+ *         required: true 
  *         schema:
  *           type: integer
  *     responses:
- *       200:
+ *       200: 
  *         description: 사용자 정보
  */
 router.get('/:id', async (req, res) => {
@@ -98,7 +100,7 @@ router.get('/:id', async (req, res) => {
  *           schema:
  *             type: object
  *             properties:
- *               username:
+ *               name:
  *                 type: string
  *               email:
  *                 type: string
