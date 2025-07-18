@@ -44,6 +44,12 @@ router.post('/', async (req, res) => {
  *     responses:
  *       200:
  *         description: 사용자 목록
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/User'
  */
 router.get('/', async (req, res) => {
   try {
