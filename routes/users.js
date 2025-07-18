@@ -119,11 +119,11 @@ router.get('/:id', async (req, res) => {
  */
 router.put('/:id', async (req, res) => {
   const { id } = req.params;
-  const { username, email, password } = req.body;
+  const { name, email, password } = req.body;
   try {
     await pool.query(
       'UPDATE public."Admin" SET name = $1, email = $2, password = $3 WHERE id = $4',
-      [username, email, password, id]
+      [name, email, password, id]
     );
     res.json({ message: '사용자 정보 수정 성공' });
   } catch (err) {
@@ -153,15 +153,6 @@ router.delete('/:id', async (req, res) => {
     res.json({ message: '사용자 삭제 성공' });
   } catch (err) {
     res.status(500).json({ error: err.message });
-  }
-});
-
-pool.query('SELECT * FROM public."Admin"', (err, res) => {
-  if (err) {
-    console.error(err);
-    
-  }else {
-    console.log(res.rows);
   }
 });
 
