@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-const pool = require('../config/db');
+const pool = require('../dist/config/db');
 
 
 /**
