@@ -70,7 +70,7 @@ app.use(function(err, req, res, next) {
 //데이터 삽입
 app.post('/insert', (req, res) => {
   const {name, email, password} = req.body;
-  pool.query('INSERT INTO public."admin" (name, email, password) VALUES ($1, $2, $3)', [name, email, password], (err, result) => {
+  pool.query('INSERT INTO public."Admin" (name, email, password) VALUES ($1, $2, $3)', [name, email, password], (err, result) => {
     if(err){
       console.log(err);
       res.status(500).json({error: '데이터베이스 연결 실패'});
