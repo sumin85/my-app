@@ -10,9 +10,10 @@ const options = {
       description: "API 문서",
     },
     servers: [
-      {url: "http://localhost:3000"},
-      {url: "http://3.39.182.130:3000"} // 요청 URL
-    ]
+      {
+        url: "http://localhost:3000", // 요청 URL
+      },
+    ],
   },
   apis: ["./routes/*.js", "./routes/users/*.js"], // Swagger 파일 연동
 };
