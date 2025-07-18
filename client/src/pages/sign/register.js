@@ -4,14 +4,9 @@ import {useNavigate} from "react-router-dom";
 
 const RegisterPage = () => {
     const navigate = useNavigate();
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
-    const [email, setEmail] = useState('');
 
-    const handleSubmit = () => {
-        const navigate = useNavigate();
         const [form, setForm] = useState({
-            username: '',
+            name: '',
             password: '',
             email: '',
         });
@@ -39,9 +34,9 @@ const RegisterPage = () => {
                 <form onSubmit={handleSubmit} className="register-form">
                     <input
                         type="text"
-                        name="username"
+                        name="name"
                         placeholder="아이디"
-                        value={form.username}
+                        value={form.name}
                         onChange={handleChange}
                         required
                     />
@@ -66,6 +61,6 @@ const RegisterPage = () => {
             </div>
         );
     };
-};
+
 
 export default RegisterPage;
