@@ -1,3 +1,4 @@
+require('dotenv').config();
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
@@ -10,11 +11,10 @@ var usersRouter = require('./routes/users');
 var app = express();
 const {swaggerUi, specs} = require('./swagger/swagger');
 
-
-
 const port = 3000;
 
 const swaggerUiDist = require('swagger-ui-dist').absolutePath();
+
 
 // app.get('/',(req, res) => {
 //   res.send('hello from Ec2!');
@@ -66,5 +66,17 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+//데이터 삽입
+app.post('/insert', (req, res) => {
+  const {username, password} = req.body;
+  pool.query('INSERT INTO public.admin (username, password) VALUES ($1, $2)', [username, password], (err, result) => {
+    if(err){
+      console.log(err);
+      res.status(500).json({error: '데이터베이스 연결 실패'});
+    } else {
+      res.status(201).json({message: '사용자 생성 성공'});
+    }
+  });
+});
 
 module.exports = app;
