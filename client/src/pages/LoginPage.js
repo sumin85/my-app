@@ -1,5 +1,7 @@
 import React, {useState} from "react";
 import {useNavigate} from 'react-router-dom';
+import axios from 'axios';
+import  { Link } from 'react-router-dom';
 
 const LoginPage = () => {
     const navigate = useNavigate();
@@ -45,9 +47,9 @@ const LoginPage = () => {
                     <button type="submit">로그인</button>
                 </form>
                 <div className="sub-links">
-                    <a href="#" onClick={() => navigate('/register')}>회원가입</a>
+                    <Link to="/register">회원가입</Link>
                     <span>|</span>
-                    <a href="#" onClick={() => navigate('/find-id-password')}>아이디/비밀번호 찾기</a>
+                    <Link to="/find-id-password">아이디/비밀번호 찾기</Link>
                     <div className="divider" />
                 </div>
                 <div className="social-buttons">

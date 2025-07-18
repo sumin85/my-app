@@ -8,8 +8,9 @@ import Dashboard from './pages/Home/Dashboard';
 import Mypage from './pages/Mypage';
 import LoginPage from './pages/LoginPage';
 import Notifications from './pages/Notifications';
+import RegisterPage from './pages/sign/register';
 import './App.css';
-
+  
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
       <Route path="/notifications" element={<Notifications />} />
       <Route path="/mypage" element={<Mypage />} />
       <Route path="/login" element={<LoginPage />} />
+      <Route path="/register" element={<RegisterPage />} />
     </Routes>
     </ErrorBoundary>
     </>
