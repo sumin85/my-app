@@ -1,12 +1,14 @@
 var express = require('express');
 var router = express.Router();
 const pool = require('../dist/config/db');
+const userController = require('../controllers/userController');
+const userRouter = require('express').Router()
 
 
 /**
  * @swagger
 * /api/users:
- *   post:
+ *   create:
  *     summary: 사용자 생성
  *     requestBody:
  *       required: true
@@ -38,11 +40,23 @@ router.post('/', async (req, res) => {
 /**
  * @swagger
  * /api/users:
- *   get:
+ *   select:
  *     summary: 전체 사용자 조회
+ *     tags: [Users]
  *     responses:
- *       200:
- *         description: 사용자 목록
+ *       "200":
+ *         description: 사용자 
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 ok:
+ *                   type: boolean
+ *                 users:
+ *                   type: object
+ 
+ *                     
  */
 router.get('/', async (req, res) => {
   try {
@@ -57,7 +71,7 @@ router.get('/', async (req, res) => {
 /**
  * @swagger
  * /api/users/{id}:
- *   get:
+ *   select:
  *     summary: 사용자 상세 조회
  *     parameters:
  *       - in: path 
@@ -68,8 +82,13 @@ router.get('/', async (req, res) => {
  *     responses:
  *       200: 
  *         description: 사용자 정보
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/User'
  */
-router.get('/:id', async (req, res) => {
+userRouter.get("/users", userController.getUsers)
+/*router.get('/:id', async (req, res) => {
   const { id } = req.params;
   try {
     const result = await pool.query('SELECT * FROM public."admin" WHERE id = $1', [id]);
@@ -80,43 +99,48 @@ router.get('/:id', async (req, res) => {
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
-});
+});*/
 
 /**
  * @swagger
- * /api/users/{id}:
- *   put:
+ * /api/users/user?user_id={user_id}:
+ *   update:
  *     summary: 사용자 정보 수정
+ *     description: 사용자 정보 수정
+ *     tags: [Users]
  *     parameters:
- *       - in: path
- *         name: id
+ *       - in: query
+ *         name: user_id
  *         required: true
  *         schema:
- *           type: integer
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             properties:
- *               name:
- *                 type: string
- *               email:
- *                 type: string
- *               password:
- *                 type: string
+ *           type: string
  *     responses:
  *       200:
- *         description: 수정 성공
+ *         description: 사용자가 서버로 전달하는 값에 따라 결과 값은 다릅니다.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 ok:
+ *                   type: boolean
+ *                 users:
+ *                   type: object
+ *                   example:
+ *                     ok:
+ *                       type: boolean
+ *                     users: 
+ *                       type: object
+ *                       example: [{"id":1, "name": "유저1"}]
+ *                         
  */
 router.put('/:id', async (req, res) => {
   const { id } = req.params;
-  const { username, email, password } = req.body;
+  const { name, email, password } = req.body;
   try {
     await pool.query(
       'UPDATE public."admin" SET name = $1, email = $2, password = $3 WHERE id = $4',
-      [username, email, password, id]
+      [name, email, password, id]
     );
     res.json({ message: '사용자 정보 수정 성공' });
   } catch (err) {
