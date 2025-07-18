@@ -6,7 +6,7 @@ function HomePage() {
     const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    axios.get("http://52.79.186.21:3000/api/users")
+    fetch("http://3.39.182.130:3000/api/users")
     .then(res => res.json())
     .then(data => setUsers(data));
   },[]);

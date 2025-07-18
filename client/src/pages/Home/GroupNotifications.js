@@ -5,7 +5,7 @@ const GroupNotifications = () => {
     const [notifications, setNotifications] = useState([]);
 
     useEffect(() => {
-        axios.get("/api/group-notifications")
+        axios.get("http://localhost:3000/api/group-notifications")
         .then(response => {
             setNotifications(response.data);
         })

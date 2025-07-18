@@ -7,7 +7,7 @@ const FriendsSchedule = () => {
     useEffect(() => {
         axios.get("/api/friends-schedules")
         .then(Response => {
-            setSchedules(resepnse.data);
+            setSchedules(Response.data);
         })
         .catch(error => {
             console.error("일정 가져오기 실패:", error);
