@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const path = require('path');
-const pool = require(path.join(__dirname, '../dist/config/db'));
+const pool = require(path.join(__dirname, '../config/db'));
 
 
 /**
