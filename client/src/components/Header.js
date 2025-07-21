@@ -1,5 +1,7 @@
 import React, {useState, useEffect } from "react";
-import {Link} from "react-router-dom"
+import {Link} from "react-router-dom";
+import { onAuthStateChanged } from 'firebase/auth';
+import { auth } from '../firebase';
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -12,6 +14,15 @@ const Header = () => {
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Firebase 인증 상태 감지
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setIsLoggedIn(!!user); // user가 있으면 true, 없으면 false
+    });
+
+    return () => unsubscribe(); // 컴포넌트 언마운트 시 리스너 해제
   }, []);
 
   return(
