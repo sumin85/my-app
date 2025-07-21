@@ -72,6 +72,9 @@
   font-size: 1.2rem;
   margin-bottom: 0.75rem;
 }
+.card li{
+  list-style: none;
+}
 
 .card .placeholder{
   flex: 1;
@@ -406,14 +409,11 @@
 /* 로그아웃 섹션 */
 .logout-section {
   padding: 20px;
-  border-top: 1px solid #e0e0e0;
-  background: #f8f9fa;
   text-align: center;
 }
 
 .logout-button {
   background: linear-gradient(135deg, #ff6b6b, #ee5a52);
-  color: white;
   border: none;
   padding: 12px 32px;
   border-radius: 25px;

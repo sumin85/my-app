@@ -2,6 +2,7 @@ import React from "react";
 import FriendSchedule from "./FriendSchedule";
 import GroupNotifications from "./GroupNotifications";
 import MyScheduleCard from "./MyScheduleCard";
+import UserList from "./UserList";
 
 
 const Dashboard = () => (
@@ -15,6 +16,9 @@ const Dashboard = () => (
     </div>
     <div className="column">
       <GroupNotifications />
+    </div>
+    <div className="column">
+      <UserList title="👤유저 리스트" />
     </div>
   </div>
 );
