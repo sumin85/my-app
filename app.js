@@ -9,6 +9,7 @@ const cors = require('cors');
 const friendsRouter = require('./routes/friends-schedules');
 const groupRouter   = require('./routes/group-notifications');
 var usersRouter = require('./routes/users');
+const naverAuthRouter = require('./routes/naver-auth');
 var app = express();
 const {swaggerUi, specs} = require('./swagger/swagger');
 
@@ -36,6 +37,7 @@ app.use(cors());
 app.use('/api/users', usersRouter);
 app.use('/api/friends-schedules', friendsRouter);
 app.use('/api/group-notifications', groupRouter);
+app.use('/api/naver-auth', naverAuthRouter);
 app.use('/swagger', express.static(swaggerUiDist));
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
 

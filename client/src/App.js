@@ -10,6 +10,7 @@ import LoginPage from './pages/LoginPage';
 import Notifications from './pages/Notifications';
 import RegisterPage from './pages/sign/register';
 import './App.css';
+import NaverCallback from './pages/NaverCallback';
   
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
       <Route path="/mypage" element={<Mypage />} />
       <Route path="/login" element={<LoginPage />} />
       <Route path="/register" element={<RegisterPage />} />
+      <Route path="/callback/naver" element={<NaverCallback />} />
     </Routes>
     </ErrorBoundary>
     </>
