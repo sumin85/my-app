@@ -1,7 +1,9 @@
 import React, {useState} from "react";
 import {useNavigate} from 'react-router-dom';
 import axios from 'axios';
-import  { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { signInWithPopup, signOut } from 'firebase/auth';
+import { auth, googleProvider, naverProvider, kakaoProvider } from '../firebase';
 
 const LoginPage = () => {
     const navigate = useNavigate();
@@ -14,6 +16,47 @@ const LoginPage = () => {
             navigate('/mypage');
         } else{
             alert('아이디 또는 비밀번호가 올바르지 않습니다.');
+        }
+    };
+
+    const handleGoogleLogin = async () => {
+        try {
+            const result = await signInWithPopup(auth, googleProvider);
+            const user = result.user;
+            console.log('Google 로그인 성공:', user);
+            alert(`환영합니다, ${user.displayName}님!`);
+            navigate('/mypage');
+        } catch (error) {
+            console.error('Google 로그인 실패:', error);
+            alert('Google 로그인에 실패했습니다.');
+        }
+    };
+
+    const handleNaverLogin = async () => {
+        const state = Math.random().toString(36).substring(2, 15) +
+                     Math.random().toString(36).substring(2, 15);
+        window.localStorage.setItem('naverState', state);
+
+        const params = [
+            'response_type=code',
+            `client_id=${process.env.REACT_APP_NAVER_CLIENT_ID}`,
+            `redirect_uri=${window.location.origin}/callback/naver`,
+            `state=${state}`
+        ].join('&');
+        
+        window.location.href = `https://nid.naver.com/oauth2.0/authorize?${params}`;
+    };
+
+    const handleKakaoLogin = async () => {
+        try {
+            const result = await signInWithPopup(auth, kakaoProvider);
+            const user = result.user;
+            console.log('카카오 로그인 성공:', user);
+            alert(`환영합니다, ${user.displayName || user.email}님!`);
+            navigate('/mypage');
+        } catch (error) {
+            console.error('카카오 로그인 실패:', error);
+            alert('카카오 로그인에 실패했습니다.');
         }
     };
 
@@ -38,7 +81,7 @@ const LoginPage = () => {
                         <input
                         type="password"
                         id="password"
-                        value={"password"}
+                        value={password}
                         placeholder="비밀번호를 입력해주세요"
                         onChange={(e) => setPassword(e.target.value)}
                         required
@@ -53,9 +96,9 @@ const LoginPage = () => {
                     <div className="divider" />
                 </div>
                 <div className="social-buttons">
-                    <button className="social-button kakao">카카오</button> 
-                    <button className="social-button naver">네이버</button>
-                    <button className="social-button google">구글</button>
+                    <button className="social-button kakao" onClick={handleKakaoLogin}>카카오</button> 
+                    <button className="social-button naver" onClick={handleNaverLogin}>네이버</button>
+                    <button className="social-button google" onClick={handleGoogleLogin}>구글</button>
                 </div>
             </div>
         </div>
