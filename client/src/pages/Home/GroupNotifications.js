@@ -5,9 +5,9 @@ const GroupNotifications = () => {
     const [notifications, setNotifications] = useState([]);
 
     useEffect(() => {
-        axios.get("http://localhost:3000/api/group-notifications")
-        .then(response => {
-            setNotifications(response.data);
+        axios.get(`${process.env.REACT_APP_API_URL}/api/group-notifications`)
+        .then(res => {
+            setNotifications(res.data);
         })
         .catch(error=> {
             console.error("알림 가져오기 실패:", error);

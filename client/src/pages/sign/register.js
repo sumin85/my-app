@@ -19,7 +19,7 @@ const RegisterPage = () => {
         const handleSubmit = async (e) => {
             e.preventDefault();
             try{
-                await axios.post('http://localhost:3000/api/users', form);
+                await axios.post(`${process.env.REACT_APP_API_URL}/api/users`, form);
                 alert('회원가입 성공');
                 navigate('/login');
             }catch(error){

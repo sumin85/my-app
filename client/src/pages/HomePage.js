@@ -6,7 +6,7 @@ function HomePage() {
     const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    fetch("http://3.39.182.130:3000/api/users")
+    fetch(`${process.env.REACT_APP_API_URL}/api/users`)
     .then(res => res.json())
     .then(data => setUsers(data));
   },[]);
