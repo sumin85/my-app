@@ -5,7 +5,7 @@ const FriendsSchedule = () => {
     const [schedules, setSchedules] = useState([]);
 
     useEffect(() => {
-        axios.get("/api/friends-schedules")
+        axios.get(`${process.env.REACT_APP_API_URL}/api/friends-schedules`)
         .then(Response => {
             setSchedules(Response.data);
         })

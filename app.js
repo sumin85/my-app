@@ -43,7 +43,7 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
 
 app.listen(port,() => {
   console.log('진행중');
-  console.log(`server is running on http://localhost:${port}`);
+  console.log(`server is running on https://localhost:${port}`);
 });
 
 app.get('/', (req,res) => {
