@@ -52,8 +52,8 @@ const Mypage = () => {
 
     return (
         <div className="mypage">
-            <h2 className="mypage-title">마이페이지</h2>
             <div className="user-info">
+                <h2 className="mypage-title">마이페이지</h2>
                 {user.photoURL && (
                     <div className="user-avatar" style={{ textAlign: 'center' }}>
                         <img 
@@ -85,7 +85,7 @@ const Mypage = () => {
                     onClick={handleLogout}
                     className="logout-button"
                     style={{
-                        backgroundColor: '#ff4757',
+                        backgroundColor: '#78509D',
                         color: 'white',
                         border: 'none',
                         padding: '10px 20px',

@@ -93,7 +93,6 @@ const LoginPage = () => {
                     <Link to="/register">회원가입</Link>
                     <span>|</span>
                     <Link to="/find-id-password">아이디/비밀번호 찾기</Link>
-                    <div className="divider" />
                 </div>
                 <div className="social-buttons">
                     <button className="social-button kakao" onClick={handleKakaoLogin}>카카오</button> 
