@@ -13,24 +13,26 @@ jobs:
     steps:
       - name : checkout release
         uses : actions/checkout@v4
+
+      - name : compress
+        run :  tar cvfz ./$my-app.zip *
+        shell : bash
         
-      - name : Configure AWS credentials
-        uses : aws-actions/configure-aws-credentials@v4
+      - name : AWS configure credentials
+        uses : aws-actions/configure-aws-credentials@v1
         with :
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ap-northeast-2
 
-      - name : Create deployment package
-        run : |
-          zip -r my-app.zip . -x '*.git*'
       - name : Upload to S3
-        run : |
-          aws s3 cp my-app.zip s3://scheduleshare-codedeploy-bucket/my-app.zip
+        run : aws s3 cp my-app.zip s3://scheduleshare-codedeploy-bucket/my-app.zip
+        
       - name : Create CodeDeploy deployment
         run : |
           aws deploy create-deployment \
-            --application-name node-deploy-pipe-codeDeploy-app \
+            --application-name scheduleshare-codedeploy-app \
+            --deployment-config-name CodeDeployDefault.AllAtOnce \
             --deployment-group-name scheduleshare-codedeploy-app \
             --s3-location bucket=scheduleshare-codedeploy-bucket,bundleType=zip,key=my-app.zip
       
