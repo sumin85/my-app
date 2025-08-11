@@ -30,7 +30,7 @@ jobs:
       - name : Create CodeDeploy deployment
         run : |
           aws deploy create-deployment \
-            --application-name scheduleshare-codedeploy-app \
+            --application-name node-deploy-pipe-codeDeploy-app \
             --deployment-group-name scheduleshare-codedeploy-app \
             --s3-location bucket=scheduleshare-codedeploy-bucket,bundleType=zip,key=my-app.zip
       
