@@ -2,12 +2,13 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  background-color: #FDF8FF;
 }
 
 .header{
   position: sticky;
   top: 0;
-  background-color: #fff;
+  background-color: #78509D;
   border-bottom: 1px solid #ddd;
   z-index: 10;
   transition: background-color 0.2s;
@@ -15,17 +16,20 @@
 }
 
 .header-container{
-  max-width: 1200px;
+  max-width: 1440px;
   margin: 0 auto;
-  padding: 1rem;
+  padding: 1rem 33px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  background-color: #78509D;
 }
 
 .header-container .logo{
   font-size: 1.5rem;
   font-weight: bold;
+  color:#fff;
+  background-color: #78509D;
 }
 
 .header-container .icon-button-notification{
@@ -34,6 +38,7 @@
   padding: 0.5rem 1rem;
   cursor: pointer;
   font-size: 0.9rem;
+  background-color: #78509D;
 }
 
 .header-container .icon-button-mypage{
@@ -42,14 +47,118 @@
   padding: 0.5rem 1rem;
   cursor: pointer;
   font-size: 0.9rem;
+  background-color: #78509D;
 }
 
+
 .dashboard{
-  max-width: 1200px;
-  margin: 1rem auto;
+  max-width: 1238px;
+  margin: 1rem 130px;
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
   gap: 1rem;
+}
+
+.tab-navigation {
+  max-width: 1200px;
+  margin: 1rem auto 0;
+  padding: 0 1rem;
+  display: flex;
+  background: #f8f9fa;
+  border-radius: 12px 12px 0 0;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.tab-button {
+  flex: 1;
+  padding: 1rem 1.5rem;
+  background: transparent;
+  border: none;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #6c757d;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.tab-button:hover {
+  background: rgba(0, 123, 255, 0.1);
+  color: #007bff;
+}
+
+.tab-button.active {
+  background: #007bff;
+  color: white;
+  font-weight: 600;
+}
+
+.tab-button.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: #0056b3;
+}
+
+.dashboard-grid {
+  max-width: 1200px;
+  margin: 0 auto 2rem;
+  padding: 2rem 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  background: #f8f9fa;
+  border-radius: 0 0 12px 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  overflow: hidden;
+}
+
+.dashboard-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+  .tab-navigation {
+    margin: 0.5rem auto 0;
+    padding: 0 0.5rem;
+  }
+  
+  .tab-button {
+    padding: 0.75rem 0.5rem;
+    font-size: 0.9rem;
+  }
+  
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin: 0 auto 1rem;
+    padding: 1rem 0.5rem;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .dashboard-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1025px) {
+  .dashboard-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 .column{
@@ -66,14 +175,16 @@
   min-height: 150px;
   display: flex;
   flex-direction: column;
+  border: 1px solid #78509D;
 }
 
-.card h2{
-  font-size: 1.2rem;
+.card h3{
   margin-bottom: 0.75rem;
+  background-color: #fefefe;
 }
 .card li{
   list-style: none;
+  background-color: #fefefe;
 }
 
 .card .placeholder{
@@ -105,43 +216,56 @@
 }
 
 .login-page {
+  max-width: 1440px;
   min-height: 100vh;
+  margin: 114px 267px;
+  padding: 64px 243px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: #EFE7F6;
 }
 
 .login-form {
   width: 400px;
-  background: #fff;
+  background: #EFE7F6;
   border-radius: 6px;
   display: flex;
   flex-direction: column;
   gap: 16px;
   margin-top: 16px;
+  color: #78509D;
 }
 
 .login-form input{
   width: 100%;
   padding: 12px 16px;
   font-size: 1.1rem;
-  border: 1px solid #bbb;
+  border: 1px solid #78509D;
   border-radius: 4px;
   margin-bottom: 4px;
   margin-top: 4px;
   box-sizing: border-box;
 }
 
-.login-form label1{
+.form-group{
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background-color: #efe7f6;
+}
+
+.login-form label{
   font-size: 1rem;
   margin-bottom: 2px;
+  background-color: #efe7f6;
 }
 
 .login-form button[type="submit"]{
   width: 100%;
   padding: 12px 0;
-  background: #555;
+  background: #78509D;
   color: #fff;
   border: none;
   border-radius: 4px;
@@ -151,21 +275,22 @@
 }
 
 .login-form button[type="submit"]:hover{
-  background: #333;
+  background: #9A82B4;
 }
 
 .login-page h2 {
   font-size: 2.5rem;
   font-weight: 700;
-  margin-bottom: 0.5rem;
-  margin-top: 0;
   text-align: center;
+  background-color: #efe7f6;
+  color : #78509D;
 }
 
 .login-page .subtitle {
   font-size: 1.2rem;
   color: #333;
   margin-bottom: 1.5rem;
+  background-color: #efe7f6;
 }
 
 .login-page .sub-links {
@@ -175,6 +300,7 @@
   margin: 12px 0 10px 0;
   color: #333;
   font-size: 0.8rem;
+  background-color: #efe7f6;
 }
 
 .login-page .divider{
@@ -182,6 +308,7 @@
   margin: 1.5rem 0;
   height: 1px;
   background: none;
+  background-color: #efe7f6;
 }
 
 .divider::before,
@@ -191,7 +318,7 @@
   top: 50%;
   width: 40%;
   height: 1px;
-  background: #ddd;
+  background: #efe7f6;
   transform: translateY(-50%);
 }
 
@@ -208,15 +335,18 @@
   gap: 12px;
   justify-content: center;
   margin-top: 8px;
+  background-color: #efe7f6;
 }
 
 .login-page .social-buttons button{
+  width: 54px;
+  height: 54px;
   padding: 8px 18px;
-  border: 1px solid #222;
-  border-radius: 4px;
-  background: #fff;
-  color: #222;
-  font-size: 1rem;
+  border: none;
+  border-radius: 50%;
+  background: #CCBADD;
+  color: #fff;
+  font-size: 0.45rem;
   cursor: pointer;
   transition: background 0.2s, color 0.2s;
   display: flex;
@@ -225,7 +355,7 @@
 }
 
 .login-page .social-buttons button:hover{
-  background: #222;
+  background: #9A82B4;
   color: #fff;
 }
 
@@ -279,7 +409,7 @@
 /* 마이페이지 스타일 */
 .mypage {
   min-height: 100vh;
-  background-color: #f5f5f5;
+  background-color: #FDF8FF;
   padding: 20px 0;
   display: flex;
   flex-direction: column;
@@ -293,21 +423,54 @@
   margin-bottom: 20px;
   margin-top: 0;
   text-align: center;
+  background-color: #fefefe;
 }
 
 .mypage .user-info{
   display: flex;
   flex-direction: column;
   align-items: center;
+  background: #fefefe;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  width: 100%;
+  margin-bottom: 20px;
+  background-color: #fefefe;
+}
+
+.mypage .user-info p {
+  margin: 10px 0;
+  font-size: 16px;
+  color: #555;
+  text-align: center;
+  background-color: #fefefe;
+}
+
+.mypage .user-info strong {
+  color: #333;
+  font-weight: 600;
+  background-color: #fefefe;
+}
+
+.mypage .user-avatar {
+  margin-bottom: 20px;
+  background-color: #fefefe;
+}
+
+.mypage .logout-section {
+  text-align: center;
 }
 
 .mypage-container {
   max-width: 800px;
   margin: 0 auto;
-  background: white;
+  background: #fefefe;
   border-radius: 12px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   overflow: hidden;
+  background-color: #fefefe;
 }
 
 /* 프로필 섹션 */
@@ -413,7 +576,7 @@
 }
 
 .logout-button {
-  background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+  background: linear-gradient(135deg, #78509D);
   border: none;
   padding: 12px 32px;
   border-radius: 25px;
@@ -426,7 +589,7 @@
 
 .logout-button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(255, 107, 107, 0.4);
+  box-shadow: 0 4px 12px rgba(154, 130, 180S  , 0.4);
 }
 
 .logout-button:active {
